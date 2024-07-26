@@ -4,6 +4,7 @@ import Create from "./components/Create";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Read from "./components/Read";
 import Update from "./components/Update";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

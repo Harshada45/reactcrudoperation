@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Update = () => {
   const [id, setId] = useState(0);
@@ -17,7 +17,7 @@ const Update = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     axios
-      .put(`https://66a0a95a7053166bcabc326b.mockapi.io/crudeoperation`, {
+      .put(`https://66a0a95a7053166bcabc326b.mockapi.io/crudeoperation/${id}`, {
         name: name,
         email: email,
       })
@@ -26,9 +26,9 @@ const Update = () => {
         setEmail("");
         navigate("/read");
       })
-      // .catch((err) => {
-      //   console.error("Error updating data:", err);
-      // });
+      .catch((err) => {
+        console.error("Error updating data:", err);
+      });
   };
 
   return (
@@ -65,11 +65,14 @@ const Update = () => {
           <div className="text-center">
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-primary mx-2"
               onClick={handleUpdate}
             >
               Update
             </button>
+            <Link to="/">
+              <button className="btn btn-secondary mx-2">Back</button>
+            </Link>
           </div>
         </form>
       </div>
